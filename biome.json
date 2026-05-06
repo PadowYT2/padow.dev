@@ -1,0 +1,61 @@
+{
+    "$schema": "node_modules/@biomejs/biome/configuration_schema.json",
+    "vcs": { "enabled": false, "clientKind": "git", "useIgnoreFile": false },
+    "files": {
+        "ignoreUnknown": false,
+        "includes": ["**", "!**/components/ui/*", "!**/routeTree.gen.ts"]
+    },
+    "formatter": {
+        "enabled": true,
+        "useEditorconfig": true,
+        "formatWithErrors": false,
+        "indentStyle": "space",
+        "indentWidth": 4,
+        "lineEnding": "lf",
+        "lineWidth": 120,
+        "attributePosition": "auto",
+        "bracketSpacing": true,
+        "includes": ["**"]
+    },
+    "assist": { "actions": { "source": { "organizeImports": "on" } } },
+    "linter": {
+        "enabled": true,
+        "rules": {
+            "recommended": true,
+            "correctness": {
+                "noUndeclaredVariables": "error",
+                "noUnusedFunctionParameters": "error",
+                "noUnusedImports": "error",
+                "noUnusedVariables": "error",
+                "useExhaustiveDependencies": "off"
+            },
+            "style": {
+                "useImportType": "off",
+                "useNumberNamespace": "off"
+            },
+            "suspicious": {
+                "noExplicitAny": "off",
+                "noEmptyBlockStatements": "error"
+            },
+            "complexity": {
+                "noForEach": "off"
+            }
+        },
+        "domains": {
+            "react": "recommended"
+        }
+    },
+    "javascript": {
+        "formatter": {
+            "jsxQuoteStyle": "single",
+            "quoteProperties": "asNeeded",
+            "trailingCommas": "all",
+            "semicolons": "always",
+            "arrowParentheses": "always",
+            "bracketSameLine": false,
+            "quoteStyle": "single",
+            "attributePosition": "auto",
+            "bracketSpacing": true
+        }
+    }
+}
