@@ -18,6 +18,7 @@ export const Route = createRootRoute({
     head: () => ({
         meta: [
             { title: 'PadowYT2' },
+            { name: 'description', content: 'Personal website of PadowYT2' },
             { charSet: 'utf-8' },
             { name: 'viewport', content: 'width=device-width, initial-scale=1' },
             { name: 'og:title', content: 'PadowYT2' },
