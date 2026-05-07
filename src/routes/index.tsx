@@ -1,6 +1,5 @@
-import { GrainGradient } from '@paper-design/shaders-react';
 import { createFileRoute } from '@tanstack/react-router';
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { Toaster, toast } from 'sonner';
 import bcfd from '@/assets/bcfd.png';
 import cybershoke from '@/assets/cybershoke.svg';
@@ -28,6 +27,8 @@ import Telegram from '~icons/simple-icons/telegram';
 import TypeScript from '~icons/simple-icons/typescript';
 import YouTube from '~icons/simple-icons/youtube';
 
+const GrainGradient = lazy(() => import('@paper-design/shaders-react').then((m) => ({ default: m.GrainGradient })));
+
 const App = () => {
     const [reduceMotion, setReduceMotion] = useState(false);
 
@@ -47,44 +48,70 @@ const App = () => {
             <div className='@container'>
                 <div className='mx-auto transition-all duration-300 gap-16 flex flex-col'>
                     <div className='px-4 @lg:px-10 relative flex flex-col items-center justify-center min-h-screen text-center gap-8 pt-8 transition-all duration-300'>
-                        <GrainGradient
-                            className='absolute inset-0 opacity-20 -z-10'
-                            colors={['#7b68ee', '#256091']}
-                            softness={1}
-                            intensity={0.7}
-                            noise={0.5}
-                            shape='corners'
-                            speed={reduceMotion ? 0 : 1}
-                            rotation={68}
-                        />
+                        <Suspense fallback={null}>
+                            <GrainGradient
+                                className='absolute inset-0 opacity-20 -z-10'
+                                colors={['#7b68ee', '#256091']}
+                                softness={1}
+                                intensity={0.7}
+                                noise={0.5}
+                                shape='corners'
+                                speed={reduceMotion ? 0 : 1}
+                                rotation={68}
+                            />
+                        </Suspense>
 
                         <div className='size-28 @lg:size-32 border border-muted-foreground/30 rounded-xl flex items-center justify-center transform-3d hover:rotate-5 active:rotate-5 transition-all duration-300 overflow-hidden'>
-                            <img src='/padow.png' alt='PadowYT2' className='w-full h-full object-cover' />
+                            <img
+                                src='/padow.png'
+                                alt='PadowYT2'
+                                width={128}
+                                height={128}
+                                className='w-full h-full object-cover'
+                            />
                         </div>
 
                         <span className='text-6xl @lg:text-7xl font-medium transition-all duration-300'>PadowYT2</span>
 
                         <div className='grid grid-cols-4 @lg:grid-cols-6 gap-4 transition-all duration-300'>
-                            <SocialIcon className='text-white' icon={GitHub} link='https://github.com/PadowYT2' />
                             <SocialIcon
-                                className='text-[#5865f2]'
+                                label='GitHub'
+                                icon={GitHub}
+                                link='https://github.com/PadowYT2'
+                                className='text-white'
+                            />
+                            <SocialIcon
+                                label='Discord'
                                 icon={Discord}
                                 callback={async () => {
                                     await navigator.clipboard.writeText('padowyt2');
                                     toast.success('Copied the username to clipboard');
                                 }}
+                                className='text-[#5865f2]'
                             />
-                            <SocialIcon className='text-[#26a5e4]' icon={Telegram} link='https://t.me/padowyt2' />
-                            <SocialIcon className='text-[#db2d54]' icon={Email} link='mailto:me@padow.ru' />
                             <SocialIcon
-                                className='col-start-2 @lg:col-auto text-[#ff0000]'
+                                label='Telegram'
+                                icon={Telegram}
+                                link='https://t.me/padowyt2'
+                                className='text-[#26a5e4]'
+                            />
+                            <SocialIcon
+                                label='Email'
+                                icon={Email}
+                                link='mailto:me@padow.ru'
+                                className='text-[#db2d54]'
+                            />
+                            <SocialIcon
+                                label='YouTube'
                                 icon={YouTube}
                                 link='https://youtube.com/@padowyt2'
+                                className='col-start-2 @lg:col-auto text-[#ff0000]'
                             />
                             <SocialIcon
-                                className='text-white'
+                                label='Steam'
                                 icon={Steam}
                                 link='https://steamcommunity.com/id/PadowYT2'
+                                className='text-white'
                             />
                         </div>
                     </div>
@@ -104,7 +131,13 @@ const App = () => {
                             <Card className='break-inside-avoid order-1'>
                                 <CardHeader className='flex gap-3'>
                                     <div className='size-12 shrink-0 rounded-xl overflow-hidden'>
-                                        <img src={vertisan} alt='Vertisan' className='w-full h-full object-cover' />
+                                        <img
+                                            src={vertisan}
+                                            alt='Vertisan'
+                                            width={48}
+                                            height={48}
+                                            className='w-full h-full object-cover'
+                                        />
                                     </div>
                                     <div className='flex flex-col gap-0.5 w-full my-auto'>
                                         <CardTitle>Vertisan</CardTitle>
@@ -157,7 +190,13 @@ const App = () => {
                             <Card className='break-inside-avoid order-3'>
                                 <CardHeader className='flex gap-3'>
                                     <div className='size-12 shrink-0 rounded-xl overflow-hidden'>
-                                        <img src={namelessmc} alt='NamelessMC' className='w-full h-full object-cover' />
+                                        <img
+                                            src={namelessmc}
+                                            alt='NamelessMC'
+                                            width={48}
+                                            height={48}
+                                            className='w-full h-full object-cover'
+                                        />
                                     </div>
                                     <div className='flex flex-col gap-0.5 w-full my-auto'>
                                         <CardTitle>NamelessMC</CardTitle>
@@ -176,12 +215,16 @@ const App = () => {
                                         <img
                                             src='/padow.png'
                                             alt='padow.host'
+                                            width={48}
+                                            height={48}
                                             className='absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-100 group-hover:opacity-0'
                                         />
 
                                         <img
                                             src={padowhost}
                                             alt=''
+                                            width={48}
+                                            height={48}
                                             className='absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 group-hover:opacity-100'
                                         />
                                     </div>
@@ -202,6 +245,8 @@ const App = () => {
                                         <img
                                             src={proxiedhost}
                                             alt='proxied.host'
+                                            width={48}
+                                            height={48}
                                             className='w-full h-full object-cover'
                                         />
                                     </div>
@@ -219,7 +264,13 @@ const App = () => {
                             <Card className='break-inside-avoid order-4'>
                                 <CardHeader className='flex gap-3'>
                                     <div className='size-12 shrink-0 rounded-xl overflow-hidden'>
-                                        <img src={cybershoke} alt='CYBERSHOKE' className='w-full h-full object-cover' />
+                                        <img
+                                            src={cybershoke}
+                                            alt='CYBERSHOKE'
+                                            width={48}
+                                            height={48}
+                                            className='w-full h-full object-cover'
+                                        />
                                     </div>
                                     <div className='flex flex-col gap-0.5 w-full my-auto'>
                                         <CardTitle>CYBERSHOKE</CardTitle>
@@ -235,7 +286,13 @@ const App = () => {
                             <Card className='break-inside-avoid order-6'>
                                 <CardHeader className='flex gap-3'>
                                     <div className='size-12 shrink-0 rounded-xl overflow-hidden'>
-                                        <img src={bcfd} alt='BCFD' className='w-full h-full object-cover' />
+                                        <img
+                                            src={bcfd}
+                                            alt='BCFD'
+                                            width={48}
+                                            height={48}
+                                            className='w-full h-full object-cover'
+                                        />
                                     </div>
                                     <div className='flex flex-col gap-0.5 w-full my-auto'>
                                         <CardTitle>BCFD</CardTitle>

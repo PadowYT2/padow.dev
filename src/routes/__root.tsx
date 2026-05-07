@@ -19,7 +19,7 @@ export const Route = createRootRoute({
         meta: [
             { title: 'PadowYT2' },
             { charSet: 'utf-8' },
-            { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1' },
+            { name: 'viewport', content: 'width=device-width, initial-scale=1' },
             { name: 'og:title', content: 'PadowYT2' },
             { name: 'theme-color', content: '#256091' },
             { name: 'og:image', content: '/padow.png' },
