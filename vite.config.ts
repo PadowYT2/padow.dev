@@ -7,7 +7,7 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
     plugins: [
-        tanstackStart({ spa: { enabled: true } }),
+        tanstackStart({ prerender: { enabled: true, autoStaticPathsDiscovery: true } }),
         react(),
         tailwindcss(),
         icons({ compiler: 'jsx', jsx: 'react' }),
