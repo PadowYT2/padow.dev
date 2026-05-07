@@ -1,5 +1,5 @@
 {
-    "name": "aboutme",
+    "name": "padow.dev",
     "type": "module",
     "scripts": {
         "dev": "vite dev",
