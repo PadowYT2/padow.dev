@@ -1,3 +1,4 @@
+import geist from '@fontsource-variable/geist/files/geist-latin-wght-normal.woff2?url';
 import { createRootRoute, HeadContent, Scripts } from '@tanstack/react-router';
 import { PropsWithChildren } from 'react';
 import '@/assets/app.css';
@@ -31,6 +32,7 @@ export const Route = createRootRoute({
         links: [
             { rel: 'icon', type: 'image/png', size: '128x128', href: '/padow.png' },
             { rel: 'canonical', href: 'https://padow.dev' },
+            { rel: 'preload', as: 'font', type: 'font/woff2', href: geist, crossOrigin: 'anonymous' },
         ],
     }),
     shellComponent: Root,
