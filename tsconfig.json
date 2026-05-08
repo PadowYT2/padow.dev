@@ -11,7 +11,7 @@
         "paths": {
             "@/*": ["./src/*"]
         },
-        "types": ["vite/client", "react", "react-dom", "bun", "unplugin-icons/types/react"]
+        "types": ["vite/client", "react", "react-dom", "bun", "@cloudflare/workers-types", "unplugin-icons/types/react"]
     },
     "include": ["./src/**/*", "./*.ts"]
 }

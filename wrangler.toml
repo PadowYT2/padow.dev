@@ -1,0 +1,8 @@
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "padow-dev"
+compatibility_date = "2026-05-07"
+workers_dev = false
+
+[assets]
+directory = "./dist/client"
+not_found_handling = "none"
