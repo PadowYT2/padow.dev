@@ -98,7 +98,7 @@ const App = () => {
                             <SocialIcon
                                 label='Email'
                                 icon={Email}
-                                link='mailto:me@padow.ru'
+                                link='mailto:me@padow.dev'
                                 className='text-[#db2d54]'
                             />
                             <SocialIcon
